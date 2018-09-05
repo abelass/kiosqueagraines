@@ -1,0 +1,23 @@
+<paquet
+	prefix="kiosqueagraines"
+	categorie="squelette"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.2.1;3.2.*]"
+	logo=""
+	documentation=""
+>
+	<!--
+		Paquet généré le 2018-09-05 16:03:23
+	-->
+
+	<nom>Kiosque à graines</nom>
+	<!-- installation des plugin nécessaires -->
+
+	<auteur>Rainer</auteur>
+
+	<licence>GNU/GPL</licence>
+
+
+
+</paquet>
