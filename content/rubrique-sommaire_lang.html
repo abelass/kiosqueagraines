@@ -3,55 +3,54 @@
 
 <BOUCLE_contentEdito(ARTICLES){id_rubrique}{titre=="Edito"}>
 <div class="container">
-    <div class="row">
-      <div class="col-sm-8">#TEXTE</div>
-    </div>
+		<div class="row">
+			<div class="col-sm-8">#TEXTE</div>
+		</div>
 </div>
 </BOUCLE_contentEdito>
 
 <BOUCLE_agendaKiosqueContext(RUBRIQUES){id_mot==2}{lang}>
-<div class="container home_activites">
-  <B_activites>
-  <BOUCLE_activites(RUBRIQUES){id_rubrique}{pagination 8}>
-    [<div class="row">(#COMPTEUR_BOUCLE|modulo{4}|oui)]
-      <BOUCLE_art(ARTICLES){id_rubrique}>
-      <div class="col-sm-2 fiche">
-      <BOUCLE_date(EVENEMENTS){id_article}>
-        <div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
-          [(#DATE_DEBUT|affdate)]
-        </div>
-      </BOUCLE_date>
-        <h3>#TITRE</h3>
-        [<div class="logof"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
+<div class="home_activites">
+	<div class="row">
+	<BOUCLE_date(EVENEMENTS){id_rubrique} {!par date_debut}{pagination 6}>
+	[<div class="row">(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
+		<div class="col-sm-3 fiche">
+			<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
+				[(#DATE_DEBUT|affdate)]
+			</div>
 
-        <p>
-          [(#TEXTE|couper{150})]
-          <br/>
-          <a href="#URL_ARTICLE">Lire la suite</a>
-        </p>
-      </div>
-      </BOUCLE_art>
-    [</div>(#COMPTEUR_BOUCLE|plus{1}|modulo{4}|ou{#COMPTEUR_BOUCLE|=={#GRAND_TOTAL}}|oui)]
-    </BOUCLE_activites>
-    [<div class="row">
-      <div class="col-sm-8">
-        (#PAGINATION{precedent_suivant})
-      </div>
-    </div>]
-  </B_activites>
+			<h3>#TITRE</h3>
+			[<div class="logof"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
+			<p>
+				[(#TEXTE|couper{150})]
+				<br/>
+				<a href="#URL_ARTICLE">Lire la suite</a>
+			</p>
+		</div>
+	[</div>(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
+	</BOUCLE_date>
+	</div>
+
+
+		[<div class="row">
+			<div class="col-sm-8">
+				(#PAGINATION{precedent_suivant})
+			</div>
+		</div>]
+	</B_date>
 </div>
 
 <div class="container home_activites_map">
-    <div class="row">
-      <div class="col-sm-8">
-        <BOUCLE_mapActivites(RUBRIQUES){id_rubrique}>
-        [(#INCLURE{fond=modeles/carte_gis,
-        	objets=articles,
-        	id_rubrique=#ID_RUBRIQUE,
-        	autocenterandzoom=oui})]
-        </BOUCLE_mapActivites>
-      </div>
-    </div>
+		<div class="row">
+			<div class="col-sm-8">
+				<BOUCLE_mapActivites(RUBRIQUES){id_rubrique}>
+				[(#INCLURE{fond=modeles/carte_gis,
+					objets=articles,
+					id_rubrique=#ID_RUBRIQUE,
+					autocenterandzoom=oui})]
+				</BOUCLE_mapActivites>
+			</div>
+		</div>
 </div>
 </BOUCLE_agendaKiosqueContext>
 </BOUCLE_content>
