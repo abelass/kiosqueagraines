@@ -7,6 +7,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
+	// A
+	'activites_du' => 'Activités du',
+
 	// K
 	'kiosqueagraines_titre' => 'Kiosque à graines',
 );

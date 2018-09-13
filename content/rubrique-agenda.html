@@ -1,0 +1,42 @@
+
+<BOUCLE_content(RUBRIQUES){id_rubrique}>
+<section>
+	<header class="cartouche">
+		[(#LOGO_RUBRIQUE|image_reduire{200,200})]
+		<h1 class="#EDIT{titre}">#TITRE</h1>
+	</header>
+	<div class="main">
+		[<div class="#EDIT{texte} chapo">(#TEXTE|adaptive_images)</div>]
+	</div>
+</section>
+	<BOUCLE_agendaKiosqueContext(RUBRIQUES){id_mot==2}{lang}>
+	<div class="agenda_activites">
+	[<h2><:kiosqueagraines:activites_du:> - (#DATE_ARCHIVES|affdate)]</h2>
+	<ul class="menu">
+		<BOUCLE_evenements(EVENEMENTS){id_rubrique} {archives ?}{pagination 10}>
+		<li class="item">
+			<h3>#TITRE</h3>
+			[(#DATE_DEBUT|affdate{H:i:s}|!={00:00:00}|oui)<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
+				[(#DATE_DEBUT|affdate{H:i:s})][ - (#DATE_FIN|affdate{H:i:s})]
+			</div>]
+
+
+			[<div class="left"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
+
+			<p>
+				[(#TEXTE|couper{150})]
+				<br/>
+				<a href="#URL_ARTICLE">Lire la suite</a>
+			</p>
+		</li>
+		</BOUCLE_evenements>
+	</ul>
+			[<div class="row">
+				<div class="col-sm-8">
+					(#PAGINATION{precedent_suivant})
+				</div>
+			</div>]
+		</B_evenements>
+		</div>
+	</BOUCLE_agendaKiosqueContext>
+</BOUCLE_content>
