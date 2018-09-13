@@ -1,0 +1,6 @@
+<composition>
+	<nom>Rubrique Galerie</nom>
+	<description>Liste les albums de la galerie</description>
+	<branche type="article" composition="galerie" />
+	<branche type="rubrique" composition="galerie" />
+</composition>

@@ -1,0 +1,69 @@
+<BOUCLE_content(ARTICLES){id_article}>
+<INCLURE{fond=breadcrumb/#ENV{type-page},env}{titre=#TITRE}>
+<article>
+	<header class="cartouche">
+		[(#LOGO_ARTICLE|image_reduire{200,200})]
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1><span class="#EDIT{titre}">#TITRE</span>[
+			<small class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</small>
+		]</h1>
+
+		[(#REM) Inclure le modele des liens de traductions ]
+		<div class="postmeta">
+			#MODELE{article_traductions}
+		<BOUCLE_nb_commentaires(FORUMS) {id_article}{plat} />[(#TOTAL_BOUCLE|oui)
+			<span class="comments">
+			<span class="sep">|</span>
+			<a[ href="(#REM|ancre_url{comments})"] [title="(#TOTAL_BOUCLE|singulier_ou_pluriel{zcore:info_1_commentaire,zcore:info_nb_commentaires}|attribut_html)"]>[<i class="icon-comment"></i> (#TOTAL_BOUCLE)]</a>
+			</span>
+			]
+		<//B_nb_commentaires>
+		<BOUCLE_combien(SIGNATURES) {id_article}{plat} />[(#TOTAL_BOUCLE|oui)
+			<span class="signatures">
+			<span class="sep">|</span>
+			<a[ href="(#REM|ancre_url{petition})"] [title="(#TOTAL_BOUCLE|singulier_ou_pluriel{zcore:info_1_signature,zcore:info_nb_signatures}|attribut_html)"]>[<i class="icon-ok-circle"></i> (#TOTAL_BOUCLE)]</a>
+			</span>
+			]
+		<//B_combien>
+			<B_tags>
+			<span class="tags">
+				<span class="sep">|</span>
+				<ul class="inline list-inline">
+					<BOUCLE_tags(MOTS){id_article}><li><a class="label label-default" href="#URL_MOT"><i class="icon-tag"></i> #TITRE</a></li></BOUCLE_tags>
+				</ul>
+			</span>
+			</B_tags>
+		</div>
+
+	</header>
+
+	<div class="main">
+		[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|adaptive_images)</div>]
+		[<div class="#EDIT{texte} texte surlignable">(#TEXTE|adaptive_images)</div>]
+
+		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+	</div>
+
+	<footer>
+		[<div class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|adaptive_images)</div>]
+		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	</footer>
+
+	<aside>
+		<div class="flex">
+		<BOUCLE_albums(DOCUMENTS){id_article}{!par date}{tout}>
+			<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
+				type="#MIME_TYPE"
+				rel="documents_portfolio[-a(#ID_ARTICLE)]"
+				[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
+				[(#FICHIER
+						|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+						|image_recadre{#ENV{width,160},#ENV{height,160}}
+						|inserer_attribut{class,spip_logos}
+						|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
+		</BOUCLE_albums>
+		</div>
+	</aside>
+
+</article>
+</BOUCLE_content>
