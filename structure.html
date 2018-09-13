@@ -1,0 +1,22 @@
+[(#SET{class,[page_(#ENV{type-page,page})[ #ENV{type-page,page}_(#ENV{composition,''})]][ composition_(#ENV{composition})]})]
+<!DOCTYPE html>
+<html lang="[(#LANG)]">
+	<head>
+		<meta charset="#CHARSET" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="squelettes/images/favicon.ico">
+
+		[(#REM) Debut du head particulier a chaque page
+		pour inserer un title, des css particulieres(mais surchargees), ou des js *inline*
+		]<INCLURE{fond=head/#ENV{type-page},env}>[
+
+		(#REM) Partie commune a toutes les pages, sans env
+		]<INCLURE{fond=inclure/head}>[
+
+		(#REM) Fin du head particulier a chaque page, pour inserer des js specifiques par exemple
+		pour inserer des js *externes*
+		]<INCLURE{fond=head_js/#ENV{type-page},env}>
+	</head>
+	<INCLURE{fond=body,env}> 
+</html>

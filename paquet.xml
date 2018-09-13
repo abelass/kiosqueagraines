@@ -29,5 +29,6 @@
 	<necessite nom="newsletters" compatibilite="[1.5.3;]" />
 	<necessite nom="menuder" compatibilite="[2.4.0;]" />
 	<necessite nom="zcore" compatibilite="[2.6.6;]" />
+	<necessite nom="menus" compatibilite="[1.6.14;]" />
 
 </paquet>

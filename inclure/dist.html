@@ -1,0 +1,5 @@
+<p class="arbo">
+	<BOUCLE_racineLang(RUBRIQUES){id_secteur}{lang}>
+	<a href="#URL_RUBRIQUE/"><:accueil_site:></a>
+	</BOUCLE_racineLang>
+	<BOUCLE_ariane(HIERARCHIE){id_secteur}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p><!--.arbo-->

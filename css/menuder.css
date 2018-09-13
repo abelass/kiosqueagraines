@@ -1,0 +1,97 @@
+
+.clearfix {
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.hide-text {
+    background-color: transparent;
+    border: 0 none;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+}
+.input-block-level {
+    box-sizing: border-box;
+    display: block;
+    min-height: 30px;
+    width: 100%;
+}
+.menuder {
+    /*width: 100%;*/
+    z-index: 1100;
+}
+.menuder ul {
+  background: #fff none repeat scroll 0 0;
+  border:1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+}
+.menuder li ul, .menuder li ul li a, .menuder li ul li, .navbar-inverse .nav .active > a {
+    background: #fff none repeat scroll 0 0;
+    color: #868686;
+
+}
+.menuder li ul:hover, .menuder li ul li:hover, .menuder li ul li a:hover, .navbar-inverse .nav .active > a:hover {
+    background: #E2E2E2 none repeat scroll 0 0;
+    color: #868686;
+}
+.menuder li ul li a {
+    background: inherit;
+    color: inherit;
+    display: block;
+}
+.menuder li ul {
+    padding: 1px;
+}
+.menuder li li.item {
+    list-style: outside none none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.menuder li ul ul, ul ul ul.menu-liste.menu-items.nav {
+    margin: -2.5em 0 0 12em;
+}
+.navbar .nav > li > ul > li > a {
+    font-size: 14px;
+    padding: 10px 5px;
+    text-transform: none;
+}
+
+.navbar .nav > li > ul > li > a:hover {
+    text-decoration:none;
+}
+
+.menuder li ul, .menuder li ul.nav {
+    border-width: 0.1em;
+    font-weight: 400;
+    height: auto;
+    left: -999em;
+    margin: 0;
+    min-width: 17em;
+    position: absolute;
+    z-index: 100;
+}
+.menuder li:hover ul ul, .menuder li:hover ul ul ul, .menuder li:hover ul ul ul ul, .menuder li.hover ul ul, .menuder li.hover ul ul ul, .menuder li.hover ul ul ul ul {
+    left: -999em;
+}
+.menuder li:hover ul, .menuder li li:hover ul, .menuder li li li:hover ul, .menuder li li li li:hover ul {
+    left: auto;
+}
+.menuder li.hover ul, .menuder li li.hover ul, .menuder li li li.hover ul, .menuder li li li li.hover ul {
+    left: auto;
+}
+.navbar .menuder li ul.nav > li {
+    float: none;
+}
+.navbar-responsive.navbar-inverse .navbar-inner .nav-collapse {
+    z-index: 1100;
+}
+.menuder a.daddy::after {
+    content: " >";
+}

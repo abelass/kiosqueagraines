@@ -1,0 +1,7 @@
+<BOUCLE_redirectionfr(RUBRIQUES){id_rubrique==5}>
+[(#URL_PAGE|match{kiosque}|oui) #HTTP_HEADER{location: #URL_PAGE#URL_RUBRIQUE}]
+</BOUCLE_redirectionfr>
+
+<BOUCLE_redirectionnl(RUBRIQUES){id_rubrique==6}>
+[(#URL_PAGE|match{zaden}|oui) #HTTP_HEADER{Location: #URL_PAGE#URL_RUBRIQUE}]
+</BOUCLE_redirectionnl>

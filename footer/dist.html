@@ -1,0 +1,40 @@
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center bottom-separator ">
+            <hr class="shadow"/>
+          </div>
+          <div class="col-md-6 col-sm-4">
+              <h4><multi>[fr]Avec le soutien de[nl]Met de steun van</multi>:</h4>
+              <B_partenaires_footer>
+              <ul class="partenaires">
+              <BOUCLE_partenaires_footer(MOTS){id_groupe==3}>
+                  <li>
+                    [(#LOGO_MOT||image_reduire{50,50})]
+                  </li>
+              </BOUCLE_partenaires_footer>
+              </ul>
+              </B_partenaires_footer>
+          </div>
+
+          <div class="col-md-6 col-sm-4">
+            <div class="pull-right">
+              <img class="logo" src="squelettes/images/logo.svg" alt="">
+            </div>
+            <div class="copyright-text text-right pull-right">
+                <p>&copy; Le kiosque à graine 2017</p>
+                <p>
+                  rue du Pont 23, 1020 Bruxelles<br/>
+                  Tel:(+32)2 123 12 12 - info@domain.be
+                </p>
+            </div>
+          </div>
+
+        </div>
+    </div>
+</footer>
+<script>
+$('.carousel').carousel({
+  interval: 50000
+})
+</script>

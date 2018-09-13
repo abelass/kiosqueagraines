@@ -1,0 +1,27 @@
+[(#REM) menu top par defaut : Nom de l'utilisateur connecte et lien de connexion/deconnexion et inscription]
+[<li class="menu_formulaires auteur" title="(#SESSION{nom})"><i class="fa fa-user-circle" aria-hidden="true"></i></li>]
+
+[(#SESSION{id_auteur}|non)
+	[(#REM) <!-- Auteur non connecte -->]
+	<li>
+		<div class="dropdown">
+  		<button id="btnConnect" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    		<:lien_connecter:>
+
+  		</button>
+  		<ul id="loginPublicform" class="dropdown-menu" aria-labelledby="btnConnect">
+    		<li>[(#LOGIN_PUBLIC)]</li>
+  		</ul>
+		</div>
+	</li>
+	[(#CONFIG{accepter_inscriptions}|=={oui}|?{ <li class="menu_formulaires"><a href="[(#URL_PAGE{inscription})]">Inscription</a></li>})]
+]
+[(#SESSION{id_auteur}|oui)
+	[(#REM) <!-- Auteur connecte -->]
+	#SET{retour_logout,''}
+	[(#ENV{id_rubrique}|appliquer_filtre{accesrestreint_rubrique_restreinte,0}|oui) #SET{retour_logout, #URL_PAGE{sommaire}}]
+	 <li><a href="#URL_LOGOUT{#GET{retour_logout}}" title="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+	[(#AUTORISER{ecrire})
+		 <li><a href="#URL_ECRIRE" title="<:espace_prive:>"><i class="fa fa-cogs" aria-hidden="true"></i></a></li>
+	]
+]

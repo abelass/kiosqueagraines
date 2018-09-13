@@ -1,0 +1,92 @@
+<BOUCLE_content(RUBRIQUES){id_rubrique}>
+<INCLURE{fond=breadcrumb/#ENV{type-page},env}>
+<section>
+	<header class="cartouche">
+		[(#LOGO_RUBRIQUE|image_reduire{200,200})]
+		<h1 class="#EDIT{titre}">#TITRE</h1>
+	</header>
+	<div class="main">
+		[<div class="#EDIT{texte} chapo">(#TEXTE|adaptive_images)</div>]
+		<BOUCLE_accueil(ARTICLES){id_article=#ID_ARTICLE_ACCUEIL}>
+				<div class="cartouche clearfix">
+					[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+					[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+				</div>
+
+				[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{672,*})</div>]
+				[<div class="#EDIT{texte} texte surlignable clearfix">(#TEXTE|image_reduire{672,*})</div>]
+
+				[<hr /><p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+				[<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{672,*})</div>]
+
+				[(#REM) Gestion du portfolio et des documents ]
+				[(#INCLURE{fond=inclure/documents,id_article,id_rubrique='',env})]
+
+				[(#REM) Petition :
+				La petition ayant une PAGINATION il faut absolument {env}
+				et pourquoi pas ajax
+				][(#PETITION|oui)<INCLURE{fond=inclure/petition,id_article,env,ajax} />]
+
+				[<div class="notes"><hr />(#NOTES)</div>]
+
+				[(#REM) Forum de l'article ]
+				<INCLURE{fond=inclure/forum,id_article} />
+				[<h2 class="forum-titre"><:forum:form_pet_message_commentaire:></h2>
+				(#FORMULAIRE_FORUM)]
+		</BOUCLE_accueil>
+				<div class="cartouche">
+					<h1 class="#EDIT{titre} surlignable">[(#LOGO_RUBRIQUE|image_reduire{224,*}) ]#TITRE</h1>
+				</div>
+
+				[<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{672,*})</div>]
+		<//B_accueil>
+	</div>
+
+	<aside>
+		[(#REM) Gestion du portfolio et des documents ]
+		[(#INCLURE{fond=inclure/documents,id_rubrique})]
+
+		[(#REM) Breves du secteur ]
+			<B_breves>
+			<div class="liste breves">
+					#ANCRE_PAGINATION
+					<h2 class="h2"><:breves:breves:></h2>
+					<ul class="liste-items">
+							<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
+							<li class="item short">#INCLURE{fond=inclure/resume/breve,id_breve}</li>
+							</BOUCLE_breves>
+					</ul>
+					[<div class="pagination">(#PAGINATION)</div>]
+			</div>
+			</B_breves>
+
+			[(#REM) Sites de la rubrique ]
+			<B_sites>
+			<div class="liste sites">
+					<h2 class="h2"><:sur_web:></h2>
+					<ul class="liste-items">
+							<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
+							<li class="item short">#INCLURE{fond=inclure/resume/site,id_syndic}
+									<B_syndic>
+									<ul class="spip">
+											<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+											<li class="short with-publication-inline">#INCLURE{fond=inclure/resume/syndic_article,id_syndic_article}</li>
+											</BOUCLE_syndic>
+									</ul>
+									</B_syndic>
+							</li>
+							</BOUCLE_sites>
+					</ul>
+			</div>
+			</B_sites>
+
+		[(#REM) Proposer un site ]
+		#FORMULAIRE_SITE
+	</aside>
+
+	<footer>
+		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
+	</footer>
+
+</section>
+</BOUCLE_content>

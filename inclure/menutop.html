@@ -1,0 +1,8 @@
+<div class="navbar-inner">
+	<div class="container">
+		<BOUCLE_navbar(MENUS?){identifiant=menutop}{si #PLUGIN{menus}}{si #CONFIG{sarkaspip/menus/top, 1}|=={1}}>
+		#INCLURE{fond=inclure/menu, env, identifiant=menutop}
+		</BOUCLE_navbar>
+		<//B_navbar>
+	</div>
+</div>
