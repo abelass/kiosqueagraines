@@ -16,13 +16,11 @@
 		<BOUCLE_evenements(EVENEMENTS){id_rubrique} {archives ?}{pagination 10}>
 		<li class="item">
 			<h3>#TITRE</h3>
-			[(#DATE_DEBUT|affdate{H:i:s}|!={00:00:00}|oui)<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
-				[(#DATE_DEBUT|affdate{H:i:s})][ - (#DATE_FIN|affdate{H:i:s})]
-			</div>]
 
-
+			<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
+				[(#ENV{archives}|non)[(#DATE_DEBUT|affdate)]] [(#DATE_DEBUT|affdate{H:i:s}|!={00:00:00}|oui)[(#DATE_DEBUT|affdate{H:i:s})][ - (#DATE_FIN|affdate{H:i:s})]]
+			</div>
 			[<div class="left"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
-
 			<p>
 				[(#TEXTE|couper{150})]
 				<br/>
