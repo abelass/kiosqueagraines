@@ -51,7 +51,7 @@
 
 	<aside>
 		<div class="flex">
-		<BOUCLE_albums(DOCUMENTS){id_article}{!par date}{tout}>
+		<BOUCLE_galerie(DOCUMENTS){id_article}{!par date}{tout}>
 			<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
 				type="#MIME_TYPE"
 				rel="documents_portfolio[-a(#ID_ARTICLE)]"
@@ -61,7 +61,7 @@
 						|image_recadre{#ENV{width,160},#ENV{height,160}}
 						|inserer_attribut{class,spip_logos}
 						|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
-		</BOUCLE_albums>
+		</BOUCLE_galerie>
 		</div>
 	</aside>
 
