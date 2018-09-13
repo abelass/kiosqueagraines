@@ -1,64 +1,64 @@
 <header id="header">
 <!--/#carousel-->
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      #SET{compteurImages,0}
-      <ol class="carousel-indicators">
-        <BOUCLE_motsCarouselCompteur(MOTS){type=Carousel}>
-        #SET{compteurImages,#TOTAL_BOUCLE}
-        <li data-target="#myCarousel" data-slide-to="#COMPTEUR_BOUCLE" class="[(#COMPTEUR_BOUCLE|=={1}|?{'active',''})]"></li>
-        </BOUCLE_motsCarouselCompteur>
-      </ol>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="100">
+			<!-- Indicators -->
+			#SET{compteurImages,0}
+			<ol class="carousel-indicators">
+				<BOUCLE_motsCarouselCompteur(MOTS){type=Carousel}>
+				#SET{compteurImages,#TOTAL_BOUCLE}
+				<li data-target="#myCarousel" data-slide-to="#COMPTEUR_BOUCLE" class="[(#COMPTEUR_BOUCLE|=={1}|?{'active',''})]"></li>
+				</BOUCLE_motsCarouselCompteur>
+			</ol>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-      <BOUCLE_motsCarouselImages(MOTS){type=Carousel}>
-        <div class="item[(#COMPTEUR_BOUCLE|=={1}|?{' active',''})]">
-          <img src="IMG/[(#LOGO_MOT|fichier)]" alt="Image">
-          <div class="carousel-caption">
-            <h3>#DESCRIPTIF</h3>
-            <p>#TEXTE</p>
-          </div>
-        </div>
-        </BOUCLE_motsCarouselImages>
-      </div>
-  </div>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+			<BOUCLE_motsCarouselImages(MOTS){type=Carousel}>
+				<div class="item[(#COMPTEUR_BOUCLE|=={1}|?{' active',''})]">
+					<img src="IMG/[(#LOGO_MOT|fichier)]" alt="Image">
+					<div class="carousel-caption">
+						<h3>#DESCRIPTIF</h3>
+						<p>#TEXTE</p>
+					</div>
+				</div>
+				</BOUCLE_motsCarouselImages>
+			</div>
+	</div>
 
 </header>
 
 <!-- nav menu -->
 
 <nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <BOUCLE_navbar(MENUS?){identifiant=menutop_#LANG}{si #PLUGIN{menus}}>
-      #INCLURE{fond=inclure/menu, env, identifiant=menutop_#LANG}
-      </BOUCLE_navbar><//B_navbar>
+	<div class="container-fluid">
+		<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+				</button>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<BOUCLE_navbar(MENUS?){identifiant=menutop_#LANG}{si #PLUGIN{menus}}>
+			#INCLURE{fond=inclure/menu, env, identifiant=menutop_#LANG}
+			</BOUCLE_navbar><//B_navbar>
 
-      <ul id="nav_user" class="nav navbar-nav navbar-right">
-        <INCLURE{fond=noisettes/session,id_rubrique=#ENV{id_rubrique,0},type-page,page,composition} />
-      </ul>
+			<ul id="nav_user" class="nav navbar-nav navbar-right">
+				<INCLURE{fond=noisettes/session,id_rubrique=#ENV{id_rubrique,0},type-page,page,composition} />
+			</ul>
 
-      <ul id="nav_lang" class="nav navbar-nav navbar-right">
-        <B_langues>
-        <BOUCLE_langues(RUBRIQUES){racine}{par lang}>
-          <li class="lang[(#LANG|=={#ENV{lang}}|oui)on active]">
-             <a rel="start" href="#URL_RUBRIQUE" title="[(#LANG|traduire_nom_langue)]">#LANG</a>
-          </li>
-        </BOUCLE_langues>
-        </B_langues>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
+			<ul id="nav_lang" class="nav navbar-nav navbar-right">
+				<B_langues>
+				<BOUCLE_langues(RUBRIQUES){racine}{par lang}>
+					<li class="lang[(#LANG|=={#ENV{lang}}|oui)on active]">
+						<a rel="start" href="#URL_RUBRIQUE" title="[(#LANG|traduire_nom_langue)]">#LANG</a>
+					</li>
+				</BOUCLE_langues>
+				</B_langues>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div><!--/.container -->
 </nav>
 
 <!--/#header-->
