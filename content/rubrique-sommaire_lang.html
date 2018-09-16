@@ -32,18 +32,5 @@
 	</div>
 	</B_date>
 </div>
-
-<div class="container home_activites_map">
-		<div class="row">
-			<div class="col-sm-8">
-				<BOUCLE_mapActivites(RUBRIQUES){id_rubrique}>
-				[(#INCLURE{fond=modeles/carte_gis,
-					objets=articles,
-					id_rubrique=#ID_RUBRIQUE,
-					autocenterandzoom=oui})]
-				</BOUCLE_mapActivites>
-			</div>
-		</div>
-</div>
 </BOUCLE_agendaKiosqueContext>
 </BOUCLE_content>
