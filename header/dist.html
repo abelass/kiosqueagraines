@@ -48,15 +48,10 @@
 				<INCLURE{fond=noisettes/session,id_rubrique=#ENV{id_rubrique,0},type-page,page,composition} />
 			</ul>
 
+			[(#REM) désactivé pour le moment
 			<ul id="nav_lang" class="nav navbar-nav navbar-right">
-				<B_langues>
-				<BOUCLE_langues(RUBRIQUES){racine}{par lang}>
-					<li class="lang[(#LANG|=={#ENV{lang}}|oui)on active]">
-						<a rel="start" href="#URL_RUBRIQUE" title="[(#LANG|traduire_nom_langue)]">#LANG</a>
-					</li>
-				</BOUCLE_langues>
-				</B_langues>
-			</ul>
+
+			</ul>]
 		</div><!--/.nav-collapse -->
 	</div><!--/.container -->
 </nav>
