@@ -12,7 +12,7 @@
 <BOUCLE_agendaKiosqueContext(RUBRIQUES){id_mot==2}{lang}>
 <div class="home_activites">
 	<div class="row">
-	<BOUCLE_date(EVENEMENTS){id_rubrique} {!par date_debut}{pagination 6}>
+	<BOUCLE_date(EVENEMENTS){id_rubrique} {!par date_debut}{0, 3}>
 	[<div class="row">(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
 		<div class="col-sm-3 fiche">
 			<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
@@ -30,13 +30,6 @@
 	[</div>(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
 	</BOUCLE_date>
 	</div>
-
-
-		[<div class="row">
-			<div class="col-sm-8">
-				(#PAGINATION{precedent_suivant})
-			</div>
-		</div>]
 	</B_date>
 </div>
 
