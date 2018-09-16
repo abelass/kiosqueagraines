@@ -1,36 +1,34 @@
 <BOUCLE_content(RUBRIQUES){id_rubrique}>
-
-
-<BOUCLE_contentEdito(ARTICLES){id_rubrique}{titre=="Edito"}>
-<div class="container">
-		<div class="row">
-			<div class="col-sm-8">#TEXTE</div>
-		</div>
-</div>
-</BOUCLE_contentEdito>
-
-<BOUCLE_agendaKiosqueContext(RUBRIQUES){id_mot==2}{lang}>
-<div class="home_activites">
-	<div class="row">
-	<BOUCLE_date(EVENEMENTS){id_rubrique} {!par date_debut}{0, 3}>
-	[<div class="row">(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
-		<div class="col-sm-3 fiche">
-			<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
-				[(#DATE_DEBUT|affdate)]
+	<BOUCLE_contentEdito(ARTICLES){id_rubrique}{titre=="Edito"}>
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-8">#TEXTE</div>
 			</div>
-
-			<h3>#TITRE</h3>
-			[<div class="logof"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
-			<p>
-				[(#TEXTE|couper{150})]
-				<br/>
-				<a href="#URL_ARTICLE">Lire la suite</a>
-			</p>
-		</div>
-	[</div>(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
-	</BOUCLE_date>
 	</div>
-	</B_date>
-</div>
-</BOUCLE_agendaKiosqueContext>
+	</BOUCLE_contentEdito>
+
+	<BOUCLE_agendaKiosqueContext(RUBRIQUES){id_mot==2}{lang}>
+	<div class="home_activites">
+		<div class="row">
+		<BOUCLE_date(EVENEMENTS){id_rubrique} {!par date_debut}{0, 3}>
+		[<div class="row">(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
+			<div class="col-sm-3 fiche">
+				<div class="datef"><i class="fa fa-bookmark-o" aria-hidden="true"></i>
+					[(#DATE_DEBUT|affdate)]
+				</div>
+
+				<h3>#TITRE</h3>
+				[<div class="logof"><a href="#URL_ARTICLE">(#LOGO_ARTICLE||image_reduire{150,150})</a></div>]
+				<p>
+					[(#TEXTE|couper{150})]
+					<br/>
+					<a href="#URL_ARTICLE">Lire la suite</a>
+				</p>
+			</div>
+		[</div>(#COMPTEUR_BOUCLE|modulo{3}|=={0}|oui)]
+		</BOUCLE_date>
+		</div>
+		</B_date>
+	</div>
+	</BOUCLE_agendaKiosqueContext>
 </BOUCLE_content>
