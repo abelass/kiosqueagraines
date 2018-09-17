@@ -1,4 +1,5 @@
 <composition>
 	<nom>Rubrique Agenda</nom>
 	<description>Composition pour la rubrique agenda</description>
+	<branche type="article" composition="agenda" />
 </composition>
