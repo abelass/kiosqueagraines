@@ -11,44 +11,21 @@
 	</div>
 
 	<aside>
-		<div class="flex">
+		<div class="galerie flex wrap space-between">
 		<BOUCLE_albums(ARTICLES documents documents_liens){id_rubrique}{!par date}{documents.mode?}>
-			<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
-				[(#FICHIER
-						|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-						|image_recadre{#ENV{width,160},#ENV{height,160}}
-						|inserer_attribut{class,spip_logos}
-						|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
+			<div class="album">
+				<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
+					[(#FICHIER
+							|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+							|image_recadre{#ENV{width,160},#ENV{height,160}}
+							|inserer_attribut{class,spip_logos}
+							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
+				<div class="legende">#TITRE<br>[(#DATE|affdate{court})]</div>
+			</div>
 		</BOUCLE_albums>
 		</div>
 		[(#REM) Gestion du portfolio et des documents ]
 		[(#INCLURE{fond=inclure/documents,id_rubrique})]
-
-
-
-
-			[(#REM) Sites de la rubrique ]
-			<B_sites>
-			<div class="liste sites">
-					<h2 class="h2"><:sur_web:></h2>
-					<ul class="liste-items">
-							<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
-							<li class="item short">#INCLURE{fond=inclure/resume/site,id_syndic}
-									<B_syndic>
-									<ul class="spip">
-											<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
-											<li class="short with-publication-inline">#INCLURE{fond=inclure/resume/syndic_article,id_syndic_article}</li>
-											</BOUCLE_syndic>
-									</ul>
-									</B_syndic>
-							</li>
-							</BOUCLE_sites>
-					</ul>
-			</div>
-			</B_sites>
-
-		[(#REM) Proposer un site ]
-		#FORMULAIRE_SITE
 	</aside>
 
 	<footer>
