@@ -1,8 +1,11 @@
-<BOUCLE_content(ARTICLES){id_article}>
+<BOUCLE_content(ARTICLES){id_article}>#SET{intro,#INTRODUCTION{#ENV{coupe,300}}
 	<BOUCLE_gis(GIS){id_article}{0,1}>#SET{gis,oui} #SET{lieu,#LIEU} #SET{adresse,#ADRESSE}</BOUCLE_gis>
+	<INCLURE{fond=breadcrumb/#ENV{type-page},env}{titre=#TITRE}>
 
-<INCLURE{fond=breadcrumb/#ENV{type-page},env}{titre=#TITRE}>
-<article>
+	<BOUCLE_vevent(EVENEMENTS){id_article}{tout}>
+	[(#GET{lieu}|non)#SET{lieu,#LIEU}][(#GET{adresse}|non)#SET{adresse,#ADRESSE}]
+	[(#SET{annee,#DATE_DEBUT|annee})][(#SET{mois,#DATE_DEBUT|nom_mois})][(#SET{jour,#DATE_DEBUT|jour})]
+<article class="entry evenement vevent id_#ID_EVENEMENT" id="evenement_#ID_EVENEMENT" itemscope itemtype="http://schema.org/Event">
 	<header class="cartouche">
 		[(#LOGO_ARTICLE|image_reduire{200,200})]
 		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
@@ -12,39 +15,29 @@
 
 		[(#REM) Inclure le modele des liens de traductions ]
 		<div class="postmeta">
-
-		<BOUCLE_nb_commentaires(FORUMS) {id_article}{plat} />[(#TOTAL_BOUCLE|oui)
-			<span class="comments">
-			
-			<a[ href="(#REM|ancre_url{comments})"] [title="(#TOTAL_BOUCLE|singulier_ou_pluriel{zcore:info_1_commentaire,zcore:info_nb_commentaires}|attribut_html)"]>[<i class="icon-comment"></i> (#TOTAL_BOUCLE)]</a>
-			</span>
-			]
-		<//B_nb_commentaires>
-		<BOUCLE_combien(SIGNATURES) {id_article}{plat} />[(#TOTAL_BOUCLE|oui)
-			<span class="signatures">
-			<span class="sep">|</span>
-			<a[ href="(#REM|ancre_url{petition})"] [title="(#TOTAL_BOUCLE|singulier_ou_pluriel{zcore:info_1_signature,zcore:info_nb_signatures}|attribut_html)"]>[<i class="icon-ok-circle"></i> (#TOTAL_BOUCLE)]</a>
-			</span>
-			]
-		<//B_combien>
-			<B_tags>
-			<span class="tags">
-				<span class="sep">|</span>
-				<ul class="inline list-inline">
-					<BOUCLE_tags(MOTS){id_article}><li><a class="label label-default" href="#URL_MOT"><i class="icon-tag"></i> #TITRE</a></li></BOUCLE_tags>
-				</ul>
-			</span>
-			</B_tags>
+			<span class="banner #EDIT{date_debut}"><span class="label label-inverse"><:agenda:date_fmt_agenda_label{annee=#GET{annee},mois=#GET{mois},jour=#GET{jour}}:></span></span>
+			<meta itemprop="startDate" content="[(#DATE_DEBUT|affdate{Y-m-d})]T[(#DATE_DEBUT|affdate{H:i:sO})]" />
+			<meta itemprop="endDate" content="[(#DATE_FIN|affdate{Y-m-d})]T[(#DATE_FIN|affdate{H:i:sO})]" />
+			[<p class="info-publi"><time><i class="icon-calendar"></i> (#DATE_DEBUT|agenda_affdate_debut_fin{#DATE_FIN,#HORAIRE*,'hcal'})</time></p>]
+			[(#ENV{intro,oui}|=={non}|non|et{#DESCRIPTIF}|oui)[(#SET{intro,[<div class="introduction #EDIT{descriptif}" itemprop="description">(#DESCRIPTIF|sinon{#GET{intro}})</div>]})]]
+			[(#GET{intro}|ou{#GET{lieu}}|ou{#GET{adresse}}|oui)
+			<div class="entry-content">
+				#GET{intro}
+				[<p class="location" itemprop="location"><span class="lieu #EDIT{lieu}">(#GET{lieu})</span>[<br /><span class="adresse #EDIT{adresse}">(#GET{adresse}|PtoBR)</span>]</p>]
+			</div>]
+			<B_mots>
+			<p class="meta-publi">
+			[(#INSCRIPTION|?{' ',''})<span class="inscrits"><span class="sep">|</span> <i class="icon-user" title="#NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)] <:agenda:inscrits|attribut_html:>"></i> #NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)]</span>]
+			<span class="sep">|</span> <BOUCLE_mots(MOTS){id_evenement}{par num titre,titre}{', '}><span class="category"><i class="icon-tag"></i> #TITRE</span></BOUCLE_mots>
+			</p>
+			</B_mots>
+			[(#INSCRIPTION|?{' ',''})<p class="meta-publi"><span class="inscrits"><span class="sep">|</span> <i class="icon-user" title="#NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)] <:agenda:inscrits|attribut_html:>"></i> #NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)]</span></p>]
+			<//B_mots>
 		</div>
 
 	</header>
 
-	<div class="main">
-		[<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|adaptive_images)</div>]
-		[<div class="#EDIT{texte} texte surlignable">(#TEXTE|adaptive_images)</div>]
 
-		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
-	</div>
 
 	<footer>
 		[<div class="#EDIT{ps} ps surlignable"><h2><:info_ps:></h2>(#PS|adaptive_images)</div>]
@@ -75,4 +68,5 @@
 	</aside>
 
 </article>
+	</BOUCLE_vevent>
 </BOUCLE_content>
