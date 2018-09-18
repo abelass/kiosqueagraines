@@ -10,7 +10,8 @@
 
 		[(#REM) Inclure le modele des liens de traductions ]
 		<div class="postmeta">
-			#MODELE{article_traductions}
+			[<p class="info-publi"><time><i class="icon-calendar"></i> (#DATE|affdate{court})</time></p>]
+
 			<B_tags>
 			<span class="tags">
 				<span class="sep">|</span>
@@ -36,17 +37,27 @@
 	</footer>
 
 	<aside>
-		<div class="flex">
+		<div class="album flex wrap space-between">
 		<BOUCLE_galerie(DOCUMENTS){id_article}{!par date}{tout}>
-			<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
-				type="#MIME_TYPE"
-				rel="documents_portfolio[-a(#ID_ARTICLE)]"
-				[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
-				[(#FICHIER
-						|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-						|image_recadre{#ENV{width,160},#ENV{height,160}}
-						|inserer_attribut{class,spip_logos}
-						|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
+			<div class="image">
+				<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
+					type="#MIME_TYPE"
+					rel="documents_portfolio[-a(#ID_ARTICLE)]"
+					[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
+					[(#FICHIER
+							|image_passe_partout{#ENV{width,160},#ENV{height,160}}
+							|image_recadre{#ENV{width,160},#ENV{height,160}}
+							|inserer_attribut{class,spip_logos}
+							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+				</a>
+				[(#TITRE|ou{#DESCRIPTIF}|oui)
+				<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
+					type="#MIME_TYPE"
+					rel="documents_portfolio[-a(#ID_ARTICLE)]"
+					[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
+					<span class="legende">[(#TITRE)][<br>(#DESCRIPTIF)]</span>
+				</a>]
+			</div>
 		</BOUCLE_galerie>
 		</div>
 	</aside>

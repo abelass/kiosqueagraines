@@ -345,13 +345,13 @@ div.panel {
 }
 
 /* Galerie */
-.galerie .album {
+.galerie .album, .album .image {
 	margin : 0.5em;
 	position: relative;1;
 
 }
 
-.galerie .legende {
+.galerie .legende, .album  .legende{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
