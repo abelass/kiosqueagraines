@@ -1,9 +1,13 @@
 <BOUCLE_content(RUBRIQUES){id_rubrique}>
 <INCLURE{fond=breadcrumb/#ENV{type-page},env}>
-<section>
+<article>
 	<header class="cartouche">
 		[(#LOGO_RUBRIQUE|image_reduire{200,200})]
 		<h1 class="#EDIT{titre}">#TITRE</h1>
+		[(#REM) Inclure le modele des liens de traductions ]
+		<div class="postmeta">
+			[<p class="info-publi"><time><i class="icon-calendar"></i> (#DATE|affdate{court})</time></p>]
+		</div>
 	</header>
 	<div class="main">
 		[<div class="#EDIT{texte} chapo">(#TEXTE|adaptive_images)</div>]
@@ -20,7 +24,9 @@
 							|image_recadre{#ENV{width,160},#ENV{height,160}}
 							|inserer_attribut{class,spip_logos}
 							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
-				<div class="legende">#TITRE<br>[(#DATE|affdate{court})]</div>
+				<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
+					<span class="legende">#TITRE<br>[(#DATE|affdate{court})]</span>
+				</a>
 			</div>
 		</BOUCLE_albums>
 		</div>
@@ -32,5 +38,5 @@
 		[<div class="notes"><h2><:info_notes:></h2>(#NOTES)</div>]
 	</footer>
 
-</section>
+</article>
 </BOUCLE_content>

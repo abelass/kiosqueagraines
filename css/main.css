@@ -347,8 +347,10 @@ div.panel {
 /* Galerie */
 .galerie .album {
 	margin : 0.5em;
-	position:relative;
+	position: relative;1;
+
 }
+
 .galerie .legende {
 	width: 100%;
 	position: absolute;
