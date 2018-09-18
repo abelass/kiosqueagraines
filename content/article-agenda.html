@@ -2,8 +2,7 @@
 	<BOUCLE_gis(GIS){id_article}{0,1}>#SET{gis,oui} #SET{lieu,#LIEU} #SET{adresse,#ADRESSE}</BOUCLE_gis>
 	<INCLURE{fond=breadcrumb/#ENV{type-page},env}{titre=#TITRE}>
 
-	<BOUCLE_vevent(EVENEMENTS){id_article}{tout}>
-	[(#GET{lieu}|non)#SET{lieu,#LIEU}][(#GET{adresse}|non)#SET{adresse,#ADRESSE}]
+
 	[(#SET{annee,#DATE_DEBUT|annee})][(#SET{mois,#DATE_DEBUT|nom_mois})][(#SET{jour,#DATE_DEBUT|jour})]
 <article class="entry evenement vevent id_#ID_EVENEMENT" id="evenement_#ID_EVENEMENT" itemscope itemtype="http://schema.org/Event">
 	<header class="cartouche">
@@ -12,7 +11,8 @@
 		<h1><span class="#EDIT{titre}">#TITRE</span>[
 			<small class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</small>
 		]</h1>
-
+	<BOUCLE_vevent(EVENEMENTS){id_article}{tout}>
+	[(#GET{lieu}|non)#SET{lieu,#LIEU}][(#GET{adresse}|non)#SET{adresse,#ADRESSE}]
 		[(#REM) Inclure le modele des liens de traductions ]
 		<div class="postmeta">
 			<span class="banner #EDIT{date_debut}"><span class="label label-inverse"><:agenda:date_fmt_agenda_label{annee=#GET{annee},mois=#GET{mois},jour=#GET{jour}}:></span></span>
@@ -34,7 +34,7 @@
 			[(#INSCRIPTION|?{' ',''})<p class="meta-publi"><span class="inscrits"><span class="sep">|</span> <i class="icon-user" title="#NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)] <:agenda:inscrits|attribut_html:>"></i> #NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)]</span></p>]
 			<//B_mots>
 		</div>
-
+	</BOUCLE_vevent>
 	</header>
 
 
@@ -68,5 +68,5 @@
 	</aside>
 
 </article>
-	</BOUCLE_vevent>
+
 </BOUCLE_content>
