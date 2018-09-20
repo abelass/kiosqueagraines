@@ -1,7 +1,7 @@
 <paquet
 	prefix="kiosqueagraines"
 	categorie="squelette"
-	version="1.0.4"
+	version="1.0.6"
 	etat="dev"
 	compatibilite="[3.2.1;3.2.*]"
 	logo=""
@@ -31,5 +31,7 @@
 	<necessite nom="zcore" compatibilite="[2.6.6;]" />
 	<necessite nom="menus" compatibilite="[1.6.14;]" />
 	<necessite nom="languepreferee" compatibilite="[0.4.7;]" />
+	<necessite nom="reservation_evenement" compatibilite="[1.29.1;]" />
+	<necessite nom="reservation_communication" compatibilite="[1.1.2;]" />
 
 </paquet>
