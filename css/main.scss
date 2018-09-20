@@ -1,3 +1,7 @@
+//Sass variables
+$main-color: #7fb733;
+
+
 /* ---- Fonts -------------*/
 /* Webfont: Lato-Regular */
 @font-face {
@@ -94,6 +98,7 @@
 	font-weight: normal;
 	text-rendering: geometricPrecision;
 }
+
 
 body {
 	background-color: #fff;
@@ -218,7 +223,7 @@ div.copyright-text {
 }
 
 a {
-	color: #7FB733;
+	color: $main-color;
 }
 
 a:hover {
@@ -259,6 +264,7 @@ hr.shadow {
 	border-bottom: 1px solid #B1B1B1;
 	box-shadow: 0 20px 20px -20px #B1B1B1;
 	margin-bottom: 40px;
+	background-color: transparent;
 }
 
 div.documents_joints ul li {
@@ -302,7 +308,7 @@ div.nav_user>div>ul>li>a {
 }
 
 .datef i {
-	color: #7FB733
+	color: $main-color
 }
 
 .logof {
@@ -353,9 +359,15 @@ div.panel {
 	justify-content: center;
 }
 
-.btn-success {
-	background-color: #7fb733;
-	border-color: #7fb733;
+.btn-success, .btn-default {
+	background-color: $main-color;
+	border-color: $main-color;
+}
+
+.btn-default:hover, input.submit:hover, .formulaire_spip button.submit:not(.btn-link):hover {
+		color: #333;
+		background-color: #e6e6e6;
+		border-color: #9c9c9c;
 }
 /**
 =================================
@@ -402,7 +414,6 @@ div.panel {
 .galerie .album, .album .image {
 	margin: 0.5em;
 	position: relative;
-	1;
 }
 
 .galerie .legende, .album  .legende {
@@ -414,9 +425,7 @@ div.panel {
 	color: #ffffff;
 }
 
-element {
 
-}
 
 input[type="checkbox"], input[type="radio"] {
 	margin: 4px 0 0;

@@ -1,9 +1,7 @@
+#SET{date,#DATE}
 <BOUCLE_content(ARTICLES){id_article}>#SET{intro,#INTRODUCTION{#ENV{coupe,300}}
 	<BOUCLE_gis(GIS){id_article}{0,1}>#SET{gis,oui} #SET{lieu,#LIEU} #SET{adresse,#ADRESSE}</BOUCLE_gis>
 	<INCLURE{fond=breadcrumb/#ENV{type-page},env}{titre=#TITRE}>
-
-
-	[(#SET{annee,#DATE_DEBUT|annee})][(#SET{mois,#DATE_DEBUT|nom_mois})][(#SET{jour,#DATE_DEBUT|jour})]
 <article class="entry evenement vevent id_#ID_EVENEMENT" id="evenement_#ID_EVENEMENT" itemscope itemtype="http://schema.org/Event">
 	<header class="cartouche">
 		[(#LOGO_ARTICLE|image_reduire{200,200})]
@@ -11,7 +9,7 @@
 		<h1><span class="#EDIT{titre}">#TITRE</span>[
 			<small class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</small>
 		]</h1>
-	<BOUCLE_vevent(EVENEMENTS){id_article}{tout}>
+	<BOUCLE_vevent(EVENEMENTS){id_article}{tout}{!par date_debut}>
 	[(#GET{lieu}|non)#SET{lieu,#LIEU}][(#GET{adresse}|non)#SET{adresse,#ADRESSE}]
 		[(#REM) Inclure le modele des liens de traductions ]
 		<div class="postmeta">
@@ -27,11 +25,37 @@
 			</div>]
 			<B_mots>
 			<p class="meta-publi">
-			[(#INSCRIPTION|?{' ',''})<span class="inscrits"><span class="sep">|</span> <i class="icon-user" title="#NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)] <:agenda:inscrits|attribut_html:>"></i> #NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)]</span>]
-			<span class="sep">|</span> <BOUCLE_mots(MOTS){id_evenement}{par num titre,titre}{', '}><span class="category"><i class="icon-tag"></i> #TITRE</span></BOUCLE_mots>
+			[(#INSCRIPTION|oui)
+
+				[(#DATE_FIN|>{#GET{date}}|?{
+					<a class="btn btn-success" title="<:reservation:inscrire:>" href="[(#URL_PAGE{inscription}|parametre_url{id_evenement,#ID_EVENEMENT})]">
+						<i class="icon-hand-right"></i><:reservation:inscrire:>
+					</a>,
+					<div class="well">
+					<p><strong><:reservation:evenement_ferme_inscription:></strong></p>
+					<a class="btn btn-success" title="<:reservation:inscrire:>" href="[(#URL_PAGE{inscription})]">
+						<i class="icon-hand-right"></i><:reservation:inscrire:>
+					</a>
+					</div>
+					})]
+				]
+				<span class="sep">|</span> <BOUCLE_mots(MOTS){id_evenement}{par num titre,titre}{', '}><span class="category"><i class="icon-tag"></i> #TITRE</span></BOUCLE_mots>
 			</p>
 			</B_mots>
-			[(#INSCRIPTION|?{' ',''})<p class="meta-publi"><span class="inscrits"><span class="sep">|</span> <i class="icon-user" title="#NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)] <:agenda:inscrits|attribut_html:>"></i> #NB_INSCRITS[/#PLACES(#PLACES|>{0}|oui)]</span></p>]
+			[(#INSCRIPTION|oui)
+
+				[(#DATE_FIN|>{#GET{date}}|?{
+					<a class="btn btn-success" title="<:reservation:inscrire:>" href="[(#URL_PAGE{inscription}|parametre_url{id_evenement,#ID_EVENEMENT})]">
+						<i class="icon-hand-right"></i><:reservation:inscrire:>
+					</a>,
+					<div class="well">
+						<p><strong><:reservation:evenement_ferme_inscription:></strong></p>
+						<a class="btn btn-success" title="<:reservation:inscrire:>" href="[(#URL_PAGE{inscription})]">
+							<i class="icon-hand-right"></i><:reservation:inscrire:>
+						</a>
+					</div>
+					})]
+			]
 			<//B_mots>
 		</div>
 	</BOUCLE_vevent>

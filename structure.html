@@ -5,7 +5,7 @@
 		<meta charset="#CHARSET" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="squelettes/images/favicon.ico">
+		<link rel="shortcut icon" href="#CHEMIN{images/favicon.ico}">
 
 		[(#REM) Debut du head particulier a chaque page
 		pour inserer un title, des css particulieres(mais surchargees), ou des js *inline*
@@ -18,5 +18,5 @@
 		pour inserer des js *externes*
 		]<INCLURE{fond=head_js/#ENV{type-page},env}>
 	</head>
-	<INCLURE{fond=body,env}> 
+	<INCLURE{fond=body,env}>
 </html>

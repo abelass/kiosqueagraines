@@ -7,12 +7,9 @@
 	logo=""
 	documentation=""
 >
-	<!--
-		Paquet généré le 2018-09-05 16:03:23
-	-->
 
 	<nom>Kiosque à graines</nom>
-	<!-- installation des plugin nécessaires -->
+
 
 	<auteur>Rainer</auteur>
 
