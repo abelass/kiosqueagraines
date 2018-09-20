@@ -30,5 +30,6 @@
 	<necessite nom="languepreferee" compatibilite="[0.4.7;]" />
 	<necessite nom="reservation_evenement" compatibilite="[1.29.1;]" />
 	<necessite nom="reservation_communication" compatibilite="[1.1.2;]" />
+	<necessite nom="bootstrap3_sass" compatibilite="[1.0.1;]" />
 
 </paquet>
