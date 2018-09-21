@@ -16,7 +16,6 @@
 	<licence>GNU/GPL</licence>
 
 	<necessite nom="agenda" compatibilite="[3.14.11;]" />
-	<necessite nom="albums" compatibilite="[3.0.21;]" />
 	<necessite nom="article_accueil" compatibilite="[1.1.6;]" />
 	<necessite nom="compositions" compatibilite="[3.3.12;]" />
 	<necessite nom="cookiechoices" compatibilite="[1.1.1;]" />
