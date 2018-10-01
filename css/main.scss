@@ -428,14 +428,11 @@ div.panel {
 
 .galerie .legende, .album  .legende {
 	width: 100%;
-	position: absolute;
-	bottom: 0;
-	background-color: rgb(127, 183, 51, 0.8);
+	background-color: rgb(127, 183, 51);
 	padding: 0.2em 0.4em;
 	color: #ffffff;
+	display: block;
 }
-
-
 
 input[type="checkbox"], input[type="radio"] {
 	margin: 4px 0 0;
