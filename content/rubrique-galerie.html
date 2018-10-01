@@ -15,13 +15,13 @@
 	</div>
 
 	<aside>
-		<div class="galerie flex wrap space-between">
+		<div class="galerie d-flex flex-wrap justify-content-between">
 		<BOUCLE_albums(ARTICLES documents documents_liens){id_rubrique}{!par date}{documents.mode?}>
-			<div class="album">
+			<div class="album col-lg-3 col-md-4 col-xs-6">
 				<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">
 					[(#FICHIER
-							|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-							|image_recadre{#ENV{width,160},#ENV{height,160}}
+							|image_passe_partout{#ENV{width,235},#ENV{height,235}}
+							|image_recadre{#ENV{width,235},#ENV{height,235}}
 							|inserer_attribut{class,spip_logos}
 							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
 				<a href="#URL_ARTICLE" title="[(#TITRE|textebrut)]">

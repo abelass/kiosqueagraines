@@ -124,6 +124,11 @@ h2 {
 	font-size: 24px;
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 /* --
 Ajout sur le menu navbar en version basse du Carousel
 -- */
@@ -193,10 +198,6 @@ ul#nav_user>li>a {
 /* ------------------ */
 .main {
 	padding-bottom: 45px;
-}
-
-#header {
-
 }
 
 #footer {
@@ -352,23 +353,6 @@ div.panel {
 	border-width: 0px 0px 1px 1px;
 }
 
-/* Flex */
-.flex {
-	display: flex;
-}
-
-.flex.wrap {
-	flex-wrap: wrap;
-}
-
-.flex.space-between {
-	justify-content: space-between;
-}
-
-.flex.center {
-	justify-content: center;
-}
-
 .btn-success, .btn-default {
 	background-color: $main-color;
 	border-color: $main-color;
@@ -422,8 +406,8 @@ div.panel {
 
 /* Galerie */
 .galerie .album, .album .image {
-	margin: 0.5em;
 	position: relative;
+	margin-bottom: 1em;
 }
 
 .galerie .legende, .album  .legende {

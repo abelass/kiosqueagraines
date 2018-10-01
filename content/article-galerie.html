@@ -37,16 +37,16 @@
 	</footer>
 
 	<aside>
-		<div class="album flex wrap space-between">
+		<div class="album d-flex flex-wrap justify-content-between">
 		<BOUCLE_galerie(DOCUMENTS){id_article}{!par date}{tout}>
-			<div class="image">
+			<div class="image col-lg-3 col-md-4 col-xs-6">
 				<a href="[(#FICHIER|image_reduire{1000,*}|extraire_attribut{src})]"
 					type="#MIME_TYPE"
 					rel="documents_portfolio[-a(#ID_ARTICLE)]"
 					[ title="(#TITRE|attribut_html) [- (#DESCRIPTIF|textebrut)]"]>
 					[(#FICHIER
-							|image_passe_partout{#ENV{width,160},#ENV{height,160}}
-							|image_recadre{#ENV{width,160},#ENV{height,160}}
+							|image_passe_partout{#ENV{width,235},#ENV{height,235}}
+							|image_recadre{#ENV{width,235},#ENV{height,235}}
 							|inserer_attribut{class,spip_logos}
 							|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
 				</a>
