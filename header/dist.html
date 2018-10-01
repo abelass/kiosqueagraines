@@ -15,7 +15,7 @@
 			<div class="carousel-inner" role="listbox">
 			<BOUCLE_motsCarouselImages(MOTS){type=Carousel}>
 				<div class="item[(#COMPTEUR_BOUCLE|=={1}|?{' active',''})]">
-					<img src="IMG/[(#LOGO_MOT|fichier)]" alt="Image">
+					<a href="#URL_SITE_SPIP"><img src="IMG/[(#LOGO_MOT|fichier)]" alt="#TITRE"></a>
 					<div class="carousel-caption">
 						<h3>#DESCRIPTIF</h3>
 						<p>#TEXTE</p>
