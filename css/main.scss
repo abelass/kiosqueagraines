@@ -232,9 +232,9 @@ a:hover {
 
 .nav {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 28px;
 
 }
+
 
 ul#nav_lang {
 	margin-right: 10px;
@@ -249,9 +249,13 @@ ul#nav_lang {
 	font-size: 21px
 }
 
-#navbar .nav > li > ul > li > a {
-	font-size: 21px
+#navbar {
+	font-size: 28px;
+	.nav > li > ul > li > a {
+		font-size: 21px
+	}
 }
+
 
 #nav_lang>li.active>a, #nav_lang>li.active>a:focus, #nav_lang>li.active>a:hover
 	{
