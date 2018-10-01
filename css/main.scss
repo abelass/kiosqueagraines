@@ -233,7 +233,6 @@ a:hover {
 
 .nav {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 }
 
 
@@ -251,10 +250,16 @@ ul#nav_lang {
 }
 
 #navbar {
-	font-size: 28px;
-	.nav > li > ul > li > a {
-		font-size: 21px
+	.nav {
+		font-size: 28px;
+		> li > ul > li > a {
+			font-size: 21px
+		}
 	}
+}
+
+#nav_user .fa {
+	font-size: 14px;
 }
 
 
