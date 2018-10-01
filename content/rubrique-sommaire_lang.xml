@@ -1,6 +1,5 @@
-    <composition>
-    	<nom>Rubrique Sommaire par langue</nom>
-    	<description>Composition pour les rubriques racines</description>
-    	<icon>images/objet-liste-contenus.png</icon>
-    	<branche type="rubrique" composition="sommaire_lang" />
-    </composition>
+<composition>
+	<nom>Rubrique Sommaire par langue</nom>
+	<description>Composition pour les rubriques racines</description>
+	<icon>images/objet-liste-contenus.png</icon>
+</composition>
