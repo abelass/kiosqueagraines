@@ -232,6 +232,8 @@ a:hover {
 
 .nav {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px;
+
 }
 
 ul#nav_lang {
@@ -244,7 +246,11 @@ ul#nav_lang {
 	border-radius: 30px;
 	text-transform: uppercase;
 	color: #333;
-	font-size: 14px
+	font-size: 21px
+}
+
+#navbar .nav > li > ul > li > a {
+	font-size: 21px
 }
 
 #nav_lang>li.active>a, #nav_lang>li.active>a:focus, #nav_lang>li.active>a:hover
