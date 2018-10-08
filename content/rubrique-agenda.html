@@ -13,7 +13,7 @@
 	<div class="agenda_activites">
 	[<h2><:kiosqueagraines:activites_du:> - (#DATE_ARCHIVES|affdate)]</h2>
 	<ul class="menu">
-		<BOUCLE_evenements(EVENEMENTS){id_rubrique} {archives ?}{pagination 10}>
+		<BOUCLE_evenements(EVENEMENTS){id_rubrique} {archives ?}{pagination 10} {!par date_debut}>
 		<li class="item">
 			<h3>#TITRE</h3>
 
